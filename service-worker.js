@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/gradusolis/precache-manifest.0a6203023b2029004d285ef0c0cd45c6.js"
+  "/gradusolis/precache-manifest.972e60b37a3dc2f5db7a628748beac5c.js"
 );
 
 self.addEventListener('message', (event) => {
