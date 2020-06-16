@@ -3,21 +3,11 @@ import LandingPage from "./components/LandingPage";
 import AfterSignin from "./components/AfterSignin";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./css/App.css";
-import users from "./data/users";
 import gradusolisLogo from "./imgs/sunlogo.png";
 
 function App() {
   const [userLogin, setUserLogin] = useState("");
   const [userPassword, setUserPassword] = useState("");
-  const [validation, setValidation] = useState(false);
-
-  const validateUser = (e) => {
-    e.preventDefault();
-    if (userLogin === "" || userPassword === "") {
-      alert("Login and password input cannot be blank !");
-    }
-    console.log(users);
-  };
 
   return (
     <div className="App">
@@ -33,15 +23,18 @@ function App() {
                 setLogin={setUserLogin}
                 password={userPassword}
                 setPassword={setUserPassword}
-                validate={validateUser}
               />
             )}
           />
           <Route
             exact
-            path={validation === true ? "/weather" : "/accessdenied"}
+            path="/weather"
             render={(routeProps) => (
-              <AfterSignin {...routeProps} login={userLogin} />
+              <AfterSignin
+                {...routeProps}
+                login={userLogin}
+                password={userPassword}
+              />
             )}
           />
           <Route

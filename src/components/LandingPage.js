@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import sunRotate from "../imgs/sunrotate.png";
 import wind from "../imgs/wind.png";
@@ -13,6 +13,11 @@ export default function LandingPage({
   setPassword,
   validate,
 }) {
+  useEffect(() => {
+    localStorage.setItem("userLogin", login);
+    localStorage.setItem("userPassword", password);
+  });
+
   return (
     <>
       <div className="about__container">
@@ -46,9 +51,11 @@ export default function LandingPage({
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit">
-            <Link to="/weather">sign in</Link>
-          </button>
+          {login !== "" && password !== "" ? (
+            <button type="submit">
+              <Link to="/weather">sign in</Link>
+            </button>
+          ) : null}
         </form>
       </div>
     </>

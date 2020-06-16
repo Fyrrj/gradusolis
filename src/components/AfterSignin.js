@@ -14,7 +14,7 @@ import { faWind } from "@fortawesome/free-solid-svg-icons";
 import humidity from "../imgs/humidity.png";
 import DetailedInfo from "./DetailedInfo";
 
-export default function AfterSignin({ login }) {
+export default function AfterSignin({ login, password }) {
   const [staticCityId, setStaticCityId] = useState(764849);
   const [staticCityName, setStaticCityName] = useState("");
   const [staticCityCountry, setStaticCityCountry] = useState("");
@@ -46,7 +46,9 @@ export default function AfterSignin({ login }) {
   };
 
   function createStaticId() {
-    const staticId = citiesList.filter((item) => item.name === staticCityName);
+    const staticId = citiesList.filter(
+      (item) => item.name.toLowerCase() === staticCityName
+    );
     const sCityId = staticId.map((city) => city.id);
     sCityId.length = 1;
     setStaticCityId(sCityId);
@@ -55,7 +57,7 @@ export default function AfterSignin({ login }) {
 
   function createStaticCountry() {
     const staticCountry = citiesList.filter(
-      (item) => item.name === staticCityName
+      (item) => item.name.toLowerCase() === staticCityName
     );
     const sCityCountry = staticCountry.map((city) => city.country);
     sCityCountry.length = 1;
@@ -105,7 +107,11 @@ export default function AfterSignin({ login }) {
         <div className="welcome__container">
           <img src={avatar} alt="user avatar" />
           <h3>Hello, {login}</h3>
-          <button>
+          <button
+            onClick={() => {
+              localStorage.clear();
+            }}
+          >
             <Link to="/">
               <FontAwesomeIcon icon={faSignOutAlt} />
             </Link>

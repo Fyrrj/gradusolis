@@ -10,7 +10,7 @@ export default function CitySearcher({
   clear,
 }) {
   const handleInputChange = (e) => {
-    setStaticCityName(e.target.value);
+    setStaticCityName(e.target.value.toLowerCase());
   };
 
   const handleFormSubmit = (e) => {
