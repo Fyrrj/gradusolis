@@ -1,4 +1,4 @@
-# **G**radusolis
+# Gradusolis
 
 Simple react weather app with OpenWeather api
 
